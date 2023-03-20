@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Unit Converter</title>
+    <script>
+      function convert() {
+        // get input value and unit
+        const inputValue = parseFloat(document.getElementById("inputValue").value);
+        const inputUnit = document.getElementById("inputUnit").value;
+
+        // convert to output value and unit
+        let outputValue, outputUnit;
+        if (inputUnit === "cm") {
+          outputValue = inputValue / 2.54;
+          outputUnit = "in";
+        } else if (inputUnit === "in") {
+          outputValue = inputValue * 2.54;
+          outputUnit = "cm";
+        } else {
+          alert("Invalid unit");
+          return;
+        }
+
+        // display output value and unit
+        document.getElementById("outputValue").value = outputValue.toFixed(2);
+        document.getElementById("outputUnit").value = outputUnit;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Unit Converter</h1>
+    <p>
+      Input:
+      <input type="number" id="inputValue" />
+      <select id="inputUnit">
+        <option value="cm">cm</option>
+        <option value="in">in</option>
+      </select>
+    </p>
+    <p>
+      Output:
+      <input type="number" id="outputValue" readonly />
+      <input type="text" id="outputUnit" readonly />
+    </p>
+    <button onclick="convert()">Convert</button>
+  </body>
+</html>
