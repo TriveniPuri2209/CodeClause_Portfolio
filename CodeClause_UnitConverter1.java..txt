@@ -1,0 +1,82 @@
+import java.util.Scanner;
+
+public class CodeClause_UnitConverter {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter the distance: ");
+        double distance = scanner.nextDouble();
+        
+        System.out.println("1. Kilometers\n2. Miles\n3. Meters");
+        System.out.print("Enter the input unit: ");
+        int inputUnit = scanner.nextInt();
+        
+        System.out.println("1. Kilometers\n2. Miles\n3. Meters");
+        System.out.print("Enter the output unit: ");
+        int outputUnit = scanner.nextInt();
+        
+        double result = convert(distance, inputUnit, outputUnit);
+        System.out.println(distance + " " + getUnitName(inputUnit) + " = " + result + " " + getUnitName(outputUnit));
+    }
+    
+    public static double convert(double distance, int inputUnit, int outputUnit) {
+        double result = 0;
+        
+        switch (inputUnit) {
+            case 1: // Kilometers
+                switch (outputUnit) {
+                    case 1: // Kilometers
+                        result = distance;
+                        break;
+                    case 2: // Miles
+                        result = distance * 0.621371;
+                        break;
+                    case 3: // Meters
+                        result = distance * 1000;
+                        break;
+                }
+                break;
+            case 2: // Miles
+                switch (outputUnit) {
+                    case 1: // Kilometers
+                        result = distance * 1.60934;
+                        break;
+                    case 2: // Miles
+                        result = distance;
+                        break;
+                    case 3: // Meters
+                        result = distance * 1609.34;
+                        break;
+                }
+                break;
+            case 3: // Meters
+                switch (outputUnit) {
+                    case 1: // Kilometers
+                        result = distance * 0.001;
+                        break;
+                    case 2: // Miles
+                        result = distance * 0.000621371;
+                        break;
+                    case 3: // Meters
+                        result = distance;
+                        break;
+                }
+                break;
+        }
+        
+        return result;
+    }
+    
+    public static String getUnitName(int unit) {
+        switch (unit) {
+            case 1:
+                return "Kilometers";
+            case 2:
+                return "Miles";
+            case 3:
+                return "Meters";
+            default:
+                return "";
+        }
+    }
+}
